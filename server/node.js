@@ -26,13 +26,21 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use('/posts', postsRoutes);
 
 
+
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+//Atlas Conneciton
+// mongoose.connect(process.env.MONGO_URI, () => {
+//     console.log('Database connected successfully!');
+// });
 
-mongoose.connect(process.env.MONGO_URI, { 
+//Robo 3T connection
+mongoose.connect(process.env.ROBO_URI,
+  {
     useNewUrlParser: true,
-    useUnifiedTopology: true }, () => {
-    console.log('Database connected successfully!');
-});
+    useUnifiedTopology: true
+  }, () => {
+    console.log('Connected to database successfully!')
+  })
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));

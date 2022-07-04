@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
       console.log('post successful!');
     } catch (error) {
       res.status(404).json({ message: error });
+      console.log(error);
     }
   });
   
@@ -27,6 +28,7 @@ router.post('/', async (req, res) => {
       res.status(200).json(getPosts);
       console.log('All Blog post retrieved!');
     } catch (error) {
+      console.log(error);
       res.status(404).json({ message: error });
     }
   });
