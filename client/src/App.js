@@ -1,22 +1,29 @@
 import React from 'react';
 import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
-const [data, setData] = React.useState(null);
+  const [state, setState] = useState([]);
 
-React.useEffect(() => {
-  fetch("/")
-    .then((res) => res.json())
-    .then((data) => setData(data.message));
+  const data = async () => {
+    const response = await fetch("/api");
+    const data = await response.json();
+
+    console.log(data);
+
+    setState(data);
+  }
+
+useEffect(() => {
+  data();
 }, []);
+
+
 
   return (
     <div className="App">
-      <header className="App-header">
         <p>{!data ? "Loading... ": data}</p>
-      </header>
-    </div>
-  );
-}
+      </div>
+  )};
 
 export default App;
