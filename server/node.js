@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const { Post } = require("./models/post");
@@ -8,10 +8,15 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const postsRoutes = require('../server/routes/posts');
+const { restart } = require('nodemon');
 
 app.get('/', (req, res) => {
     res.status(200).send('Home Page');
 });
+
+app.get('/api', (req, res) => {
+  res.json({ message: "Hello from backend!"});
+})
 
 // const test = new Post({
 //     title: "newGuitar",
