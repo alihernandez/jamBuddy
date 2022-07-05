@@ -32,6 +32,35 @@ router.post('/', async (req, res) => {
       res.status(404).json({ message: error });
     }
   });
+
+  //GET by ID
+  router.get('/:postId', async (req, res) => {
+    try {
+      const getSinglePost = await Post.findById(req.params.postId);
+
+      res.status(200).json(getSinglePost);
+      console.log(`blog with idv${req.params.postId} retrieved!`)
+    } catch (error) {
+      console.log(error);
+      res.status(404).json({message: error});
+    }
+  });
+
+  //DELETE by ID
+  router.delete('/postId', async (req, res) => {
+    try {
+      const deleteSinglePost = await Post.remove({ 
+        _id:req.params.postId
+      });
+
+      res.status(200).json(deleteSinglePost);
+      console.log(`post with id ${req.params.postId} deleted!`);
+    } catch (error) {
+      res.status(404).json({ message: error });
+    }
+  });
+
+  //UPDATE by ID
   
 
 module.exports = router;
