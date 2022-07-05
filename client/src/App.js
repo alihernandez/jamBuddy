@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { render } from 'react-dom';
+import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
 
-function App() {
-const [data, setData] = React.useState(null);
+import ChordList from './components/chords';
+import Scale from './components/Scale';
 
-React.useEffect(() => {
-  fetch("/")
-    .then((res) => res.json())
-    .then((data) => setData(data.message));
-}, []);
+
+function App(props) {
+//   const [state, setState] = useState([]);
+
+//   const data = async () => {
+//     const response = await fetch("/posts");
+//     const data = await response.json();
+
+//     console.log(data);
+
+//     setState(data);
+//   }
+
+// useEffect(() => {
+//   data();
+// }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{!data ? "Loading... ": data}</p>
-      </header>
-    </div>
-  );
-}
+      <h1>JamBuddy</h1>
+      <div className='optionsBar'>
+
+      </div>
+      <Scale />
+        <Routes>
+          <Route exact path="/" element={ChordList} />
+          <Route exact path='/scale' element={Scale} />
+        </Routes>
+      </div>
+  )
+  };
 
 export default App;

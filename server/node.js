@@ -1,14 +1,18 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = 3001;
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const { Post } = require("./models/post");
+const data = require("./data");
 const dotenv = require('dotenv');
 dotenv.config();
 
 const postsRoutes = require('../server/routes/posts');
-const { restart } = require('nodemon');
+// const { restart } = require('nodemon');
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.status(200).send('Home Page');
@@ -16,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
   res.json({ message: "Hello from backend!"});
+  res.json({ data });
 })
 
 // const test = new Post({
