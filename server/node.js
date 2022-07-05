@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const postsRoutes = require('../server/routes/posts');
-const { restart } = require('nodemon');
+// const { restart } = require('nodemon');
 
 app.use(cors());
 
