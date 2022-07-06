@@ -61,6 +61,20 @@ router.post('/', async (req, res) => {
   });
 
   //UPDATE by ID
+  router.patch('/:postId', async (req, res) => {
+    try {
+      const updatePost = await Post.updateOne(
+        { _id: req.params.postId },
+        { $set: { title: req.body.title, 
+                  description: req.body.description }}
+      );
+
+      res.status(200).json(updatePost);
+      console.log(`Blog post updated!`);
+    } catch (error) {
+      res.status(404).json({ message: error });
+    }
+  });
   
 
 module.exports = router;
