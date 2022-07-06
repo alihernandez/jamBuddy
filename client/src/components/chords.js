@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import PostsDataService from '../services/app.service';
 
 
 export default function ChordList(props) {
@@ -23,11 +25,23 @@ export default function ChordList(props) {
         }
 
         getData();
+        retrieveData();
 
         return;
     }, [data.length]);
 
-    console.log(props);
+    const retrieveData = () => {
+        PostsDataService.getAll()
+          .then(response => {
+            setData(response.data);
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+          
+      };
+    
 
     return(
         <div>
@@ -35,6 +49,9 @@ export default function ChordList(props) {
             <button></button>
         </div>
             <div id="chordDiagram">
+                <h1>Chord:</h1>
+
+               <p>{data.title}</p>
 
             </div>
     </div>

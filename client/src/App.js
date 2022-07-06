@@ -28,7 +28,7 @@ function App(props) {
     <div className="App">
       <h1>JamBuddy</h1>
       <div className='optionsBar'>
-
+      <ChordList />
       </div>
       <Scale />
         <Routes>
