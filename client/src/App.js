@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import ChordList from './components/chords';
+import TestList from './components/TestChord';
 import Scale from './components/Scale';
 
 
@@ -28,9 +29,10 @@ function App(props) {
     <div className="App">
       <h1>JamBuddy</h1>
       <div className='optionsBar'>
-
+      {/* <ChordList /> */}
+      {/* <TestList /> */}
       </div>
-      <Scale />
+      {/* <Scale /> */}
         <Routes>
           <Route exact path="/" element={ChordList} />
           <Route exact path='/scale' element={Scale} />
